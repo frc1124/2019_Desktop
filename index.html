@@ -2,26 +2,39 @@
 <html>
     <head>
         <title>Robot Dashboard</title>
-        <link rel="stylesheet" href="index.css">
-
+        <link rel="stylesheet" href="main.css"/>
+        <script src="/pynetworktables2js/js/networktables.js"></script>
     </head>
     <body>
         <div class="wrapper">
-            <div class="header">Robot</div>
-            <div class="contentWrapper">
-                <div class="dataWrapper">
-                    
-                </div>
-                <div class="cameraWrapper">
-                    <image id="camFeed" src="http://roboRIO-1124-FRC.local:1181/?action=stream" onerror="document.getElementById('Drive').setAttribute('src','http://roboRIO-1124-FRC.local:1181/?action=stream');" height="100%" width="100%" alt="Failure"/>
-                </div>
-                <div class="autoSelectWrapper">
-
-                </div>
-                <div class="statusWrapper">
-
-                </div>
+            <div class="header">
+                <header>-Robot-</header>
+            </div>
+            <div class="statusWrapper">
+                <div class="statusItem one" id="commsStatus"> Robot Comms: </div>
+                <div class="statusItem two" id="codeStatus"> Robot Code: </div>
+                <div class="statusItem three" id="batteryStatus"> Battery: </div>
+                <div class="statusItem four" id="cameraStatus"> Camera Feed: </div>
+                <div class="statusItem five" id="pressureStatus"> Pressure: </div>
+            </div>
+            <div class="cameraWrapper">
+                <image id="camFeed" src="http://roboRIO-1124-FRC.local:1181/?action=stream" onerror="document.getElementById('Drive').setAttribute('src','http://roboRIO-1124-FRC.local:1181/?action=stream');" height="100%" width="100%" alt="Failure"/>
+                <canvas id="targetImaging"></canvas>
+            </div>
+            <div class="autoWrapper">
+                <div class="autoItem">None</div>
+                <div class="autoItem"></div>
+                <div class="autoItem"></div>
+                <div class="autoItem"></div>
+                <div class="autoItem"></div>
+                <div class="autoItem"></div>
+                <div class="autoItem"></div>
+                <div class="autoItem"></div>
+            </div>
+            <div class="HUDWrapper">
+                <div class="HUDItem" onclick="toggleTargeting()">Toggle HUD</div>
             </div>
         </div>
+        <script src="index.js"></script>
     </body>
 </html>
