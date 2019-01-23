@@ -1,0 +1,87 @@
+*{
+  margin: 0;
+  padding: 0;
+
+  overflow-x: hidden;
+  overflow-y: hidden;
+
+  font-size: 25;
+  font-family: sans-serif;
+
+  box-sizing: border-box;
+}
+.wrapper{
+  background-color: grey;
+  width: 100vw;
+  height: 100vh;
+}
+.header{
+  width: 100%;
+  height: 9%;
+  
+  position: absolute;
+  top: 0px;
+  left: 0px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
+  background-color: blue;
+}
+.cameraWrapper{
+  width: 50%;
+  height: 75%;
+
+  position: absolute;
+  top: 10%;
+  left: 25%;
+
+  background-color: black;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.autoSelectWrapper{
+  width: 25%;
+  height: 75%;
+
+  position: absolute;
+  top: 10%;
+  left: 75%;
+
+  background-color: green;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.dataWrapper{
+  width: 25%;
+  height: 75%;
+
+  position: absolute;
+  top: 10%;
+  left: 0%;
+
+  background-color: red;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.statusWrapper{
+  width: 100%;
+  height: 15%;
+
+  position: absolute;
+  top: 85%;
+  left: 0%;
+
+  background-color: yellow;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Robot Dashboard</title>
+        <link rel="stylesheet" href="index.css">
+
+    </head>
+    <body>
+        <div class="wrapper">
+            <div class="header">Robot</div>
+            <div class="contentWrapper">
+                <div class="dataWrapper">
+                    
+                </div>
+                <div class="cameraWrapper">
+                    <image id="camFeed" src="http://roboRIO-1124-FRC.local:1181/?action=stream" onerror="document.getElementById('Drive').setAttribute('src','http://roboRIO-1124-FRC.local:1181/?action=stream');" height="100%" width="100%" alt="Failure"/>
+                </div>
+                <div class="autoSelectWrapper">
+
+                </div>
+                <div class="statusWrapper">
+
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
