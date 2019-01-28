@@ -1,1 +1,1 @@
-py tornado_server.py --robot roborio-1124-frc.local
+py -3 -m pynetworktables2js --robot roborio-1124-frc.local

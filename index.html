@@ -3,7 +3,7 @@
     <head>
         <title>Robot Dashboard</title>
         <link rel="stylesheet" href="main.css"/>
-        <script src="/pynetworktables2js/js/networktables.js"></script>
+        <script src="/networktables/networktables.js"></script>
     </head>
     <body>
         <div class="wrapper">
@@ -17,7 +17,7 @@
                 <div class="statusItem four" id="cameraStatus"> Camera Feed: </div>
                 <div class="statusItem five" id="pressureStatus"> Pressure: </div>
             </div>
-            <div class="cameraWrapper">
+            <div id="Drive" class="cameraWrapper">
                 <image id="camFeed" src="http://roboRIO-1124-FRC.local:1181/?action=stream" onerror="document.getElementById('Drive').setAttribute('src','http://roboRIO-1124-FRC.local:1181/?action=stream');" height="100%" width="100%" alt="Failure"/>
                 <canvas id="targetImaging"></canvas>
             </div>
