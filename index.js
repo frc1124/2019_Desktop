@@ -1,4 +1,4 @@
-//Key data
+//Key and Value data
 
 var key = {
   battery: {
@@ -26,57 +26,52 @@ function robotConnction(){
   else{document.getElementById("commsStatus").style.backgroundColor = "green";}
 }
 
+function batteryPower(value){
+  document.getElementById("batteryStatus").innerHTML() = value;
+
+  if(value >= 11){document.getElementById("batteryStatus").style.backgroundColor = "green";}
+  else if(value >= 10){document.getElementById("batteryStatus").style.backgroundColor = "yellow";}
+  else{document.getElementById("batteryStatus").style.backgroundColor = "red";}
+}
+
+function pressureStatus(){
+  document.getElementById("pressureStatus").innerHTML() = value;
+
+  if(value){document.getElementById("pressureStatus").style.backgroundColor = "green";}
+  else{document.getElementById("pressureStatus").style.backgroundColor = "red";}
+}
+
+//Networktable Listeners
+if(NetworkTables.isWsConnected()){
+  NetworkTables.addRobotConnectionListener(robotConnction);
+  NetworkTables.addKeyListener('/dash/leftEncoderDistanceEntry', encoderData);
+  NetworkTables.addKeyListener('/dash/batteryEntry', function(key, value, isNew){batteryPower();}, true);
+  NetworkTables.addKeyListener('/dash/pressureEntry', function(key, value, isNew){pressureStatus();}, true);
+}
 //Targeting
 
-var canvas = document.getElementById("targetImaging");
-var ctx = canvas.getContext("2d");
+const canvas = document.getElementById("targetImaging");
+const ctx = canvas.getContext("2d");
 var image = document.getElementById("camFeed");
 var active = false;
 
 function toggleTargeting(){
   if(!active){
     active = true;
-    activateTargeting()
+    //document.getElementsById('HUDItem').sytle.backgroundColor = "white";
+    displayTarget();
   }
   else{
     active = false;
-    deactivateTargeting()
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
   }
 }
 
-function activateTargeting(){
-  document.getElementById('targetImaging').style.opacity = 0.5;
-  displayTarget();
-}
-
-function deactivateTargeting(){
-  canvas.style.opacity = 0;
-}
-
 function displayTarget(){
-  
+  var centerX = 50; //NetworkTables.getValue('/dash/targetCenterX', 240);
+  var centerY = 50; //NetworkTables.getValue('/dash/targetCenterY', 240);
+
+  ctx.beginPath();
+  ctx.arc(centerX, centerY, 20, 0, 2 * Math.PI);
+  ctx.fill();
 }
-
-//Networktable Listeners
-
-NetworkTables.addKeyListener('/dash/batteryEntry', function(key, value, isNew){
-  
-  document.getElementById("batteryStatus").innerHTML() = value;
-
-  if(value >= 11){document.getElementById("batteryStatus").style.backgroundColor = "green";}
-  else if(value >= 10){document.getElementById("batteryStatus").style.backgroundColor = "yellow";}
-  else{document.getElementById("batteryStatus").style.backgroundColor = "red";}
-
-}, true);
-
-NetworkTables.addKeyListener('/dash/pressureEntry', function(key, value, isNew){
-  
-  document.getElementById("pressureStatus").innerHTML() = value;
-
-  if(value){document.getElementById("pressureStatus").style.backgroundColor = "green";}
-  else{document.getElementById("pressureStatus").style.backgroundColor = "red";}
-
-}, true);
-
-NetworkTables.addRobotConnectionListener(robotConnction);
-NetworkTables.addKeyListener('/dash/leftEncoderDistanceEntry', encoderData);
