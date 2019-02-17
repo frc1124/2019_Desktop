@@ -18,7 +18,9 @@
                 <div class="statusItem five" id="pressureStatus"> Pressure: </div>
             </div>
             <div id="Drive" class="cameraWrapper">
-                <image id="camFeed" src="http://roboRIO-1124-FRC.local:1181/?action=stream" onerror="document.getElementById('Drive').setAttribute('src','http://roboRIO-1124-FRC.local:1181/?action=stream');" height="100%" width="100%" alt="Failure"/>
+                <image id="camFeedFront" class="camFeed" src="http://roboRIO-1124-FRC.local:1181/?action=stream" onerror="document.getElementById('DriveFront').setAttribute('src','http://roboRIO-1124-FRC.local:1181/?action=stream');" height="100%" width="100%" alt="Failure"/>
+
+                <image id="camFeedBack" class="camFeed" src="http://roboRIO-1124-FRC.local:1181/?action=stream" onerror="document.getElementById('DriveBack').setAttribute('src','http://roboRIO-1124-FRC.local:1181/?action=stream');" height="100%" width="100%" alt="Failure" "/>
                 <canvas id="targetImaging"></canvas>
             </div>
             <div class="autoWrapper">

@@ -16,8 +16,13 @@ var value = {
 
 //Network Table Methods
 
-function encoderData(){
+function leftEncoderData(){
   document.getElementById('codeStatus').innerHTML = NetworkTables.getValue('/dash/leftEncoderDistanceEntry');
+  document.getElementById('codeStatus').style.backgroundColor = "yellow";
+}
+
+function rightEncoderData(){
+  document.getElementById('codeStatus').innerHTML = NetworkTables.getValue('/dash/rightEncoderDistanceEntry');
   document.getElementById('codeStatus').style.backgroundColor = "yellow";
 }
 
@@ -44,7 +49,8 @@ function pressureStatus(){
 //Networktable Listeners
 if(NetworkTables.isWsConnected()){
   NetworkTables.addRobotConnectionListener(robotConnction);
-  NetworkTables.addKeyListener('/dash/leftEncoderDistanceEntry', encoderData);
+  NetworkTables.addKeyListener('/dash/leftEncoderDistanceEntry', leftEncoderData);
+  NetworkTables.addKeyListener('/dash/rightEncoderDistanceEntry', rightEncoderData);
   NetworkTables.addKeyListener('/dash/batteryEntry', function(key, value, isNew){batteryPower();}, true);
   NetworkTables.addKeyListener('/dash/pressureEntry', function(key, value, isNew){pressureStatus();}, true);
 }
@@ -52,7 +58,8 @@ if(NetworkTables.isWsConnected()){
 
 const canvas = document.getElementById("targetImaging");
 const ctx = canvas.getContext("2d");
-var image = document.getElementById("camFeed");
+var imageFront = document.getElementById("DriveFront");
+var imageBack = document.getElementById("DriveBack");
 var active = false;
 
 function toggleTargeting(){
